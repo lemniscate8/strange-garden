@@ -9,13 +9,16 @@ const PatternControl = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: fit-content;
-  padding: 10px;
   margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: 2px solid #ececec;
-  border-radius: 10px;
+  border-radius: 0.25rem;
 `;
 
 const Title = styled.h4`
+  margin-left: 10px;
+  margin-right: 10px;
   align-self: center;
 `;
 

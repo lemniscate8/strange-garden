@@ -8,7 +8,7 @@ const PanelContents = styled.div`
   display: flex;
   flex-flow: column wrap;
   border: 2px solid #ececec;
-  border-radius: 10px;
+  border-radius: 0.25rem;
   padding: 10px;
   margin-left: 10px;
   margin-right: 10px;

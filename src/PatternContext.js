@@ -4,6 +4,7 @@ const PatternContext = createContext();
 
 export const PatternContextProvider = ({ children }) => {
   const [patterns, setPatterns] = useState([]);
+
   return (
     <PatternContext.Provider value={{ patterns, setPatterns }}>
       {children}

@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { useFormikContext, Field } from "formik";
-import { Container } from "react-bootstrap";
 import { Row, Col, Form as BootForm, Button } from "react-bootstrap";
 
 const ParameterPanel = () => {
@@ -15,11 +14,16 @@ const ParameterPanel = () => {
     },
     [outerShell, handleChange, setFieldValue]
   );
+
+  const clearPatterns = useCallback(() => {
+    setFieldValue("patterns", []);
+  }, [setFieldValue]);
+
   return (
     <>
       <h3>Meta-Parameters</h3>
       <Row>
-        <Col sm={6}>
+        <Col xs={6}>
           <BootForm.Label>Pattern size: {values.patternSize}</BootForm.Label>
           <Field
             as={BootForm.Control}
@@ -30,8 +34,12 @@ const ParameterPanel = () => {
             step={1}
           ></Field>
         </Col>
-        <Col sm={6}>
-          <Button size="sm" disabled={!touched.patternSize}>
+        <Col xs={6}>
+          <Button
+            size="sm"
+            disabled={!touched.patternSize}
+            onClick={clearPatterns}
+          >
             Confirm change
           </Button>
         </Col>
@@ -40,7 +48,7 @@ const ParameterPanel = () => {
         Warning: confirm change will delete all existing pattern data
       </BootForm.Text>
       <Row>
-        <Col sm={6}>
+        <Col xs={6}>
           <BootForm.Label>Pen size: {values.penSize}</BootForm.Label>
           <Field
             as={BootForm.Control}
@@ -51,7 +59,7 @@ const ParameterPanel = () => {
             step={0.5}
           ></Field>
         </Col>
-        <Col sm={6}>
+        <Col xs={6}>
           <BootForm.Label>Opacity: {values.opacity}</BootForm.Label>
           <Field
             as={BootForm.Control}
@@ -64,7 +72,7 @@ const ParameterPanel = () => {
         </Col>
       </Row>
       <Row>
-        <Col sm={6}>
+        <Col xs={6}>
           <BootForm.Label>Inner shell: {values.innerShell}</BootForm.Label>
           <Field
             as={BootForm.Control}
@@ -76,7 +84,7 @@ const ParameterPanel = () => {
             onChange={handleAndForce}
           ></Field>
         </Col>
-        <Col sm={6}>
+        <Col xs={6}>
           <BootForm.Label>Outer shell: {values.outerShell}</BootForm.Label>
           <Field
             as={BootForm.Control}

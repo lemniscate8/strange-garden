@@ -1,14 +1,10 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import {
-  GitBranchIcon,
-  GitPullRequestIcon,
-  ArrowUpIcon,
-  ArrowDownIcon,
-} from "@primer/octicons-react";
+import { ArrowUpIcon, ArrowDownIcon } from "@primer/octicons-react";
 
 import ParameterPanel from "./ParameterPanel";
+import TemplatePanel from "./TemplatePanel";
 
 const App = () => (
   <Container fluid>
@@ -41,26 +37,30 @@ const App = () => (
             gliders, and rotators.
           </p>
           <Row>
-            <Col sm={{ span: 6, order: 2 }} lg={{ span: 4, order: 2 }}>
+            <Col
+              sm={{ span: 6, order: 2 }}
+              md={{ span: 5, order: 2 }}
+              lg={{ span: 4, order: 2 }}
+            >
               <ParameterPanel />
             </Col>
+            <hr />
             <Col>
-              <h3>Structure Templates</h3>
+              <TemplatePanel />
             </Col>
           </Row>
 
           <br />
           <Row>
             <Col sm={3} lg={4}>
-              <Button>
-                <ArrowDownIcon />
-                <GitBranchIcon /> Aggregate
+              <Button size="sm">
+                <ArrowDownIcon /> Aggregate
               </Button>
             </Col>
+
             <Col sm={3} lg={4}>
-              <Button>
-                <ArrowUpIcon />
-                <GitPullRequestIcon /> Ameliorate
+              <Button size="sm" style={{ float: "right" }}>
+                <ArrowUpIcon /> Stabilize
               </Button>
             </Col>
           </Row>

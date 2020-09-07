@@ -3,6 +3,8 @@ import { Field } from "formik";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { XIcon } from "@primer/octicons-react";
 
+import PixelField from "./PixelField";
+
 const PatternField = ({ pattern, index, remove }) => {
   return (
     <Col sm={12} md={6} lg={4}>
@@ -26,7 +28,6 @@ const PatternField = ({ pattern, index, remove }) => {
             </Button>
           </Col>
         </Form.Group>
-
         <Form.Group as={Row}>
           <Form.Label column xs={2} sm={3}>
             Type:
@@ -44,6 +45,12 @@ const PatternField = ({ pattern, index, remove }) => {
             </Field>
           </Col>
         </Form.Group>
+        <Field
+          as={PixelField}
+          id={`patterns.${index}.pixels`}
+          name={`patterns.${index}.pixels`}
+          size={pattern.size}
+        />
       </div>
     </Col>
   );

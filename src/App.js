@@ -1,7 +1,14 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { ArrowUpIcon, ArrowDownIcon } from "@primer/octicons-react";
+import {
+  ArrowUpIcon,
+  ArrowDownIcon,
+  ImageIcon,
+  GlobeIcon,
+  BeakerIcon,
+  GraphIcon,
+} from "@primer/octicons-react";
 
 import ParameterPanel from "./ParameterPanel";
 import TemplatePanel from "./TemplatePanel";
@@ -16,7 +23,14 @@ const App = () => (
         innerShell: 10,
         outerShell: 15,
         patterns: [],
-        datapoints: [],
+        computed: {
+          inner: [],
+          outer: [],
+          target: [],
+          actual: [],
+          errorI: [],
+          errorO: [],
+        },
       }}
       validate={(values) => {}}
     >
@@ -42,10 +56,22 @@ const App = () => (
               md={{ span: 5, order: 2 }}
               lg={{ span: 4, order: 2 }}
             >
+              <h3>
+                Main Parameters
+                <div style={{ float: "right" }}>
+                  <GlobeIcon size="medium" />
+                </div>
+              </h3>
               <ParameterPanel />
             </Col>
             <hr />
             <Col>
+              <h3>
+                Pattern Builder
+                <div style={{ float: "right" }}>
+                  <ImageIcon size="medium" />
+                </div>
+              </h3>
               <TemplatePanel />
             </Col>
           </Row>
@@ -68,10 +94,20 @@ const App = () => (
 
           <Row>
             <Col sm={6}>
-              <h3>Rule Set</h3>
+              <h3>
+                Rule Generation
+                <div style={{ float: "right" }}>
+                  <GraphIcon size="medium" />
+                </div>
+              </h3>
             </Col>
             <Col>
-              <h3>Simulation</h3>
+              <h3>
+                Simulation
+                <div style={{ float: "right" }}>
+                  <BeakerIcon size="medium" />
+                </div>
+              </h3>
             </Col>
           </Row>
         </Form>

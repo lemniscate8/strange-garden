@@ -1,9 +1,15 @@
 import React, { useCallback } from "react";
 import { useFormikContext, Field } from "formik";
-import { Row, Col, Form as BootForm, Button } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 
 const ParameterPanel = () => {
-  const { values, touched, handleChange, setFieldValue } = useFormikContext();
+  const {
+    values,
+    touched,
+    handleChange,
+    setFieldValue,
+    setFieldTouched,
+  } = useFormikContext();
   const { outerShell } = values;
   const handleAndForce = useCallback(
     (value) => {
@@ -17,16 +23,16 @@ const ParameterPanel = () => {
 
   const clearPatterns = useCallback(() => {
     setFieldValue("patterns", []);
-  }, [setFieldValue]);
+    setFieldTouched("patternSize", false);
+  }, [setFieldValue, setFieldTouched]);
 
   return (
     <>
-      <h3>Meta-Parameters</h3>
       <Row>
         <Col xs={6}>
-          <BootForm.Label>Pattern size: {values.patternSize}</BootForm.Label>
+          <Form.Label>Pattern size: {values.patternSize}</Form.Label>
           <Field
-            as={BootForm.Control}
+            as={Form.Control}
             name="patternSize"
             type="range"
             min={7}
@@ -44,38 +50,15 @@ const ParameterPanel = () => {
           </Button>
         </Col>
       </Row>
-      <BootForm.Text>
+      <Form.Text>
         Warning: confirm change will delete all existing pattern data
-      </BootForm.Text>
+      </Form.Text>
+
       <Row>
         <Col xs={6}>
-          <BootForm.Label>Pen size: {values.penSize}</BootForm.Label>
+          <Form.Label>Inner shell: {values.innerShell}</Form.Label>
           <Field
-            as={BootForm.Control}
-            name="penSize"
-            type="range"
-            min={1}
-            max={20}
-            step={0.5}
-          ></Field>
-        </Col>
-        <Col xs={6}>
-          <BootForm.Label>Opacity: {values.opacity}</BootForm.Label>
-          <Field
-            as={BootForm.Control}
-            name="opacity"
-            type="range"
-            min={0}
-            max={1}
-            step={0.05}
-          ></Field>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={6}>
-          <BootForm.Label>Inner shell: {values.innerShell}</BootForm.Label>
-          <Field
-            as={BootForm.Control}
+            as={Form.Control}
             name="innerShell"
             type="range"
             min={0}
@@ -85,9 +68,9 @@ const ParameterPanel = () => {
           ></Field>
         </Col>
         <Col xs={6}>
-          <BootForm.Label>Outer shell: {values.outerShell}</BootForm.Label>
+          <Form.Label>Outer shell: {values.outerShell}</Form.Label>
           <Field
-            as={BootForm.Control}
+            as={Form.Control}
             name="outerShell"
             type="range"
             min={values.innerShell + 1}
